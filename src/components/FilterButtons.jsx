@@ -1,46 +1,77 @@
 import React from "react";
+import Cart from "./Cart"; // Import Cart component
 
-function FilterButtons({ filtered, handleFilterToggle }) {
+function FilterButtons({ filtered, handleFilterToggle, cart }) {
   return (
-    <div
-      className="d-flex justify-content-center mb-5 "
-      style={{ boxShadow: "0px 0px 10px -4px" }}
-    >
-      <div className="btn-group my-4" role="group" aria-label="Basic example">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <div className="container-fluid">
+        {/* Logo or Brand Name */}
+        <a className="navbar-brand" href="/">
+          ShopEasy
+        </a>
+
+        {/* Toggler/collapsible Button for Mobile View */}
         <button
-          className={`btn btn-outline-dark rounded mx-2 ${
-            filtered === "all" ? "active" : ""
-          }`}
-          onClick={() => handleFilterToggle("all")}
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
         >
-          All
+          <span className="navbar-toggler-icon"></span>
         </button>
-        <button
-          className={`btn btn-outline-dark rounded mx-2 ${
-            filtered === "men's clothing" ? "active" : ""
-          }`}
-          onClick={() => handleFilterToggle("men's clothing")}
-        >
-          Mens
-        </button>
-        <button
-          className={`btn btn-outline-dark rounded mx-2 ${
-            filtered === "women's clothing" ? "active" : ""
-          }`}
-          onClick={() => handleFilterToggle("women's clothing")}
-        >
-          Womens
-        </button>
-        <button
-          className={`btn btn-outline-dark rounded mx-2 ${
-            filtered === "electronics" ? "active" : ""
-          }`}
-          onClick={() => handleFilterToggle("electronics")}
-        >
-          Electronics
-        </button>
+
+        {/* Navbar Links and Filter Buttons */}
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            <li className="nav-item">
+              <button
+                className={`btn btn-outline-dark mx-2 ${
+                  filtered === "all" ? "active" : ""
+                }`}
+                onClick={() => handleFilterToggle("all")}
+              >
+                All
+              </button>
+            </li>
+            <li className="nav-item">
+              <button
+                className={`btn btn-outline-dark mx-2 ${
+                  filtered === "men's clothing" ? "active" : ""
+                }`}
+                onClick={() => handleFilterToggle("men's clothing")}
+              >
+                Mens
+              </button>
+            </li>
+            <li className="nav-item">
+              <button
+                className={`btn btn-outline-dark mx-2 ${
+                  filtered === "women's clothing" ? "active" : ""
+                }`}
+                onClick={() => handleFilterToggle("women's clothing")}
+              >
+                Womens
+              </button>
+            </li>
+            <li className="nav-item">
+              <button
+                className={`btn btn-outline-dark mx-2 ${
+                  filtered === "electronics" ? "active" : ""
+                }`}
+                onClick={() => handleFilterToggle("electronics")}
+              >
+                Electronics
+              </button>
+            </li>
+          </ul>
+          {/* Cart Component on the right side */}
+          <Cart cart={Cart} /> {/* Pass the actual cart array */}
+        </div>
       </div>
-    </div>
+    </nav>
   );
 }
 

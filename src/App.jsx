@@ -48,7 +48,6 @@ function App() {
             path="/"
             element={
               <>
-                <Cart cart={cart} />
                 <FilterButtons
                   filtered={filtered}
                   handleFilterToggle={handleFilterToggle}

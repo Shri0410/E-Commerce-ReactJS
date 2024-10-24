@@ -1,15 +1,15 @@
 import React from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
 
-function Cart({ cart }) {
-  // Calculate the total number of items in the cart
+function Cart({ cart = [] }) {
+  // Calculate the total number of items in the cart (with default value as empty array)
   const totalItems = cart.length;
 
   // Get the navigate function
   const navigate = useNavigate();
 
   return (
-    <div className="cart-section mt-5 d-flex justify-content-end">
+    <div className="ms-auto d-flex align-items-center">
       <h3 onClick={() => navigate("/cart")} style={{ cursor: "pointer" }}>
         <i className="fas fa-shopping-cart"></i> ({totalItems})
       </h3>
